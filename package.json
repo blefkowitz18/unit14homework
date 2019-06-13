@@ -1,0 +1,25 @@
+{
+  "name": "unit14homework",
+  "version": "1.0.0",
+  "description": "unit14homework",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blefkowitz18/unit14homework.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blefkowitz18/unit14homework/issues"
+  },
+  "homepage": "https://github.com/blefkowitz18/unit14homework#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mysql": "^2.17.1"
+  }
+}
