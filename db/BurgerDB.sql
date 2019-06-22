@@ -9,8 +9,8 @@ eaten BOOLEAN DEFAULT false,
 primary key (id)
 );
 
-INSERT INTO burgers(burger_name)
-VALUES ("Bacon Burger");
+INSERT INTO burgers(burger_name, eaten)
+VALUES ("Bacon Burger", true);
 
 INSERT INTO burgers(burger_name)
 VALUES ("Cheeseburger");

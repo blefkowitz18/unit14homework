@@ -1,51 +1,67 @@
-<h1>Burgers!</h1>
-
-<h2>Burgers to be devoured</h2>
-
-<ul>
-    {{#each burgers}}
-    {{#unless devoured}}
-        {{this.id}}.{{this.burger_name}}
-    {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-    <div class="form-group">
-        <label for="addBurger">Burger Name </label>
-        <input type="text" id="addBurger" name="name">
-        <input type="text" id="addEaten" name="eaten">
+<div class="container">
+    <div class = "jumbotron" style="text-align: center">
+        <h1>Burgers!</h1>
     </div>
-    <button id = "test" type="submit">Add Burger</button>
-</form>
+    <div class="row">
+        <div class="col-6">
+            <h2>Burgers to be Devoured</h2>
+            <ul>
+                {{#each burgers}}
+                {{#unless eaten}}
+                <p>
+                    {{this.id}}.{{this.burger_name}}
+                <button class = "devour">Devour</button>
+                </p>
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-6">
+            <h2>Devoured Burgers</h2>
+            <ul>
+                {{#each burgers}}
+                {{#if eaten}}
+                <p>
+                    {{this.id}}.{{this.burger_name}}
+                </p>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Add a Burger</h2>
+        </div>
+        <div class="col-12">
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="addBurger">Burger Name </label>
+                    <input type="text" id="addBurger" name="name">
+                </div>
+                <button id="test" type="submit">Add Burger</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 <script>
 
-      $("#test").on("click", function (event) {
+    $("#test").on("click", function (event) {
         // Make sure to preventDefault on a submit event.
-       event.preventDefault();
+        event.preventDefault();
 
         var newBurger = {
             burger_name: $("#addBurger").val().trim(),
-            eaten: $("#addEaten").val().trim(),
-        
+
         };
-        console.log("Sharon is Cool!")
-        // Send the POST request.
-        // $.ajax("/", {
-        //     type: "POST",
-        //     data: newBurger
-        // }).then(
-        //     function () {
-        //         console.log("New Burger Added");
-        //         // Reload the page to get the updated list
-        //         location.reload();
-        //     }
-            console.log(newBurger)
-            $.post("/", newBurger).then(function(data){
-                console.log("New Burger Added");
-                
-            })
+
+        console.log(newBurger)
+        $.post("/", newBurger).then(function (data) {
+            console.log("New Burger Added");
+
+        })
+        location.reload()
     });
 </script>

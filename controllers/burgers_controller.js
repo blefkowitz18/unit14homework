@@ -5,9 +5,10 @@ var router = express.Router();
 var burger = require("../models/models.js");
 
 router.get("/", function(req, res) {
+  console.log("hello world")
     burger.all(function(data) {
       var hbsObject = {
-        burger: data
+        burgers: data
       };
       console.log(hbsObject);
       res.render("index", hbsObject);
@@ -29,12 +30,12 @@ router.get("/", function(req, res) {
 
 
 
-  router.put("/:id", function(req, res) {
+  router.put("/", function(req, res) {
     var condition = "id = " + req.params.id;
-  
+   
     console.log("condition", condition);
   
-    cat.update({
+    burger.update({
       eaten: req.body.eaten
     }, condition, function(result) {
       if (result.changedRows == 0) {

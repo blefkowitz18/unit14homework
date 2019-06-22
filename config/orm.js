@@ -34,8 +34,10 @@ var orm = {
             }
             cb(result);
         });
+        console.log("working")
     },
     create: function (table, cols, vals, cb) {
+        console.log("test")
         var queryString = "INSERT INTO " + table;
 
         queryString += " (";
@@ -56,6 +58,4 @@ var orm = {
         });
     },
 };
-
-// Export the orm object for the model (cat.js).
 module.exports = orm;
