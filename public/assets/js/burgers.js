@@ -19,24 +19,5 @@ $(function () {
             }
         );
     });
-    $(".create-form").on("submit", function (event) {
-        // Make sure to preventDefault on a submit event.
-        event.preventDefault();
-
-        var newBurger = {
-            name: $("#addBurger").val().trim(),
-        };
-
-        // Send the POST request.
-        $.ajax("/", {
-            type: "POST",
-            data: newBurger
-        }).then(
-            function () {
-                console.log("New Burger Added");
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
-    });
+  
 })

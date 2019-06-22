@@ -3,7 +3,10 @@
 <h2>Burgers to be devoured</h2>
 
 <ul>
-    {{#each burger_name}}
+    {{#each burgers}}
+    {{#unless devoured}}
+        {{this.id}}.{{this.burger_name}}
+    {{/unless}}
     {{/each}}
 </ul>
 
@@ -12,6 +15,37 @@
     <div class="form-group">
         <label for="addBurger">Burger Name </label>
         <input type="text" id="addBurger" name="name">
+        <input type="text" id="addEaten" name="eaten">
     </div>
-    <button type="submit">Add Burger</button>
+    <button id = "test" type="submit">Add Burger</button>
 </form>
+
+<script>
+
+      $("#test").on("click", function (event) {
+        // Make sure to preventDefault on a submit event.
+       event.preventDefault();
+
+        var newBurger = {
+            burger_name: $("#addBurger").val().trim(),
+            eaten: $("#addEaten").val().trim(),
+        
+        };
+        console.log("Sharon is Cool!")
+        // Send the POST request.
+        // $.ajax("/", {
+        //     type: "POST",
+        //     data: newBurger
+        // }).then(
+        //     function () {
+        //         console.log("New Burger Added");
+        //         // Reload the page to get the updated list
+        //         location.reload();
+        //     }
+            console.log(newBurger)
+            $.post("/", newBurger).then(function(data){
+                console.log("New Burger Added");
+                
+            })
+    });
+</script>
