@@ -1,5 +1,5 @@
 <div class="container">
-    <div class = "jumbotron" style="text-align: center">
+    <div class="jumbotron" style="text-align: center">
         <h1>Burgers!</h1>
     </div>
     <div class="row">
@@ -10,7 +10,8 @@
                 {{#unless eaten}}
                 <p>
                     {{this.id}}.{{this.burger_name}}
-                <button class = "devour">Devour</button>
+                    {{!-- <button class = "devour" data-id="{{id}}" data-neweaten="{{eaten}}">{{#if eaten}}Re-Order!{{else}}Devour!{{/if}}</button> --}}
+                    {{> burger-block eaten=true}}
                 </p>
                 {{/unless}}
                 {{/each}}
@@ -23,6 +24,8 @@
                 {{#if eaten}}
                 <p>
                     {{this.id}}.{{this.burger_name}}
+                    {{!-- <button class = "devour" data-id="{{id}}" data-neweaten="{{eaten}}">{{#if eaten}}Re-Order!{{else}}Devour!{{/if}}</button> --}}
+                    {{> burger-block eaten=false}}
                 </p>
                 {{/if}}
                 {{/each}}
@@ -58,7 +61,7 @@
         };
 
         console.log(newBurger)
-        $.post("/", newBurger).then(function (data) {
+        $.post("/api/burgers/", newBurger).then(function (data) {
             console.log("New Burger Added");
 
         })
